@@ -21,6 +21,8 @@ ln -s /path/to/bnb-dip-defaults/dip.yml ~/dip.yml
 
 Now, when you are in any sub-directory, dip will search up and find this shared `dip.yml` file.
 
+When you are wanting to add additional commands to a specific repository, create a `dip.override.yml` inside the repository and dip will merge that in with these global defaults.
+
 ## Update
 
 You can get the latest and greatest BNB Dip Defaults by pulling the latest from GitHub.
