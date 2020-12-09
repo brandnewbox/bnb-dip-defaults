@@ -1,7 +1,6 @@
 # Required minimum dip version
 version: '4.1'
 
-
 compose:
   files:
     - docker-compose.yml
@@ -12,11 +11,13 @@ interaction:
     description: Open the Bash shell in app's container
     service: app
     command: bash
+    compose_run_options: [no-deps]
 
   bundle:
     description: Run Bundler commands
     service: app
     command: bundle
+    compose_run_options: [no-deps]
 
   rake:
     description: Run Rake commands
@@ -38,13 +39,10 @@ interaction:
       s:
         description: Run Rails server at http://localhost:3000
         service: app
-        compose:
-          run_options: [service-ports]
+        compose_run_options: [service-ports]
 
   yarn:
     description: Run yarn commands
     service: app
     command: yarn
-
-provision:
-  - "dip compose up -d mysql traefik redis minio delayed_job memcached maildev"
+    compose_run_options: [no-deps]
