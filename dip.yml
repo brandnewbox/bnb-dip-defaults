@@ -3,8 +3,8 @@ version: '4.1'
 
 compose:
   files:
-    - docker-compose.yml
-    - docker-compose.$USER.yml
+    - $PWD/docker-compose.yml
+    - $PWD/docker-compose.$USER.yml
 
 interaction:
   bash:
