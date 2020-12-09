@@ -1,0 +1,50 @@
+# Required minimum dip version
+version: '4.1'
+
+
+compose:
+  files:
+    - docker-compose.yml
+    - docker-compose.$USER.yml
+
+interaction:
+  bash:
+    description: Open the Bash shell in app's container
+    service: app
+    command: bash
+
+  bundle:
+    description: Run Bundler commands
+    service: app
+    command: bundle
+
+  rake:
+    description: Run Rake commands
+    service: app
+    command: bundle exec rake
+
+  rspec:
+    description: Run Rspec commands
+    service: app
+    environment:
+      RAILS_ENV: test
+    command: bundle exec rspec
+
+  rails:
+    description: Run Rails commands
+    service: app
+    command: bundle exec rails
+    subcommands:
+      s:
+        description: Run Rails server at http://localhost:3000
+        service: app
+        compose:
+          run_options: [service-ports]
+
+  yarn:
+    description: Run yarn commands
+    service: app
+    command: yarn
+
+provision:
+  - "dip compose up -d mysql traefik redis minio delayed_job memcached maildev"
