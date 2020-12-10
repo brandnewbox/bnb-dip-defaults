@@ -27,3 +27,34 @@ When you are wanting to add additional commands to a specific repository, create
 
 You can get the latest and greatest BNB Dip Defaults by pulling the latest from GitHub.
 
+## Caveats
+
+In order to get support for both `development` and `test` environments, there are a few things you must "under-specify":
+
+### Database URL
+
+Your environment variable should set the database URL _without_ the database name. Rails will use the name specified in your `database.yml` config to determine the database name.
+
+```
+DATABASE_URL=postgis://postgres:password@postgres:5432
+```
+
+```yaml
+default: &default
+  adapter: postgis
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  schema_search_path: public
+
+development:
+  <<: *default
+  database: rosetta_development
+
+test:
+  <<: *default
+  database: rosetta_test
+```
+
+### RAILS_ENV
+
+Do not specify `RAILS_ENV=development` in your `.docker-development-vars`. Rails will figure this out by default. Doing so will give bundler the freedom to install both development AND test gems.
