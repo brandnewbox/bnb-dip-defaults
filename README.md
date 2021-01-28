@@ -10,7 +10,7 @@ BNB uses dip to consistently act inside our docker containers. A lot of those co
 
 Install [dip](https://github.com/bibendi/dip).
 
-Clone this repository onto your machine. Location does not matter.
+After dip is installed, clone the bnb-dip-defaults repository onto your machine. Location does not matter.
 
 Create a symbolic link to this projects `dip.yml` file in your home directory (or some other high level directory that contains all of your BNB projects).
 
