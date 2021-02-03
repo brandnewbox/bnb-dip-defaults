@@ -51,3 +51,9 @@ interaction:
     description: Run standardrb
     service: app
     command: bundle exec standardrb
+    
+  webpacker:
+    description: Run webpack dev server
+    service: webpacker
+    compose:
+      run_options: [service-ports, use-aliases]
