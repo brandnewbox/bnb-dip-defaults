@@ -46,3 +46,8 @@ interaction:
     service: app
     command: yarn
     compose_run_options: [no-deps]
+    
+  standardrb:
+    description: Run standardrb
+    service: app
+    command: bundle exec standardrb
