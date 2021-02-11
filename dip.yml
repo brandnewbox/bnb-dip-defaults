@@ -57,3 +57,8 @@ interaction:
     service: webpacker
     compose:
       run_options: [service-ports, use-aliases]
+      
+  srb:
+    description: Run sorbet commands
+    service: app
+    command: srb
