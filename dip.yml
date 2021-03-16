@@ -24,6 +24,11 @@ interaction:
     service: app
     command: bin/rake
 
+  setup:
+    description: Run setup command
+    service: app
+    command: bin/setup
+
   rspec:
     description: Run Rspec commands
     service: app
