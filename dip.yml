@@ -67,3 +67,4 @@ interaction:
     description: Run sorbet commands
     service: app
     command: srb
+    compose_run_options: [no-deps]
